@@ -21,7 +21,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def train(args):
     # Create model, optimizer and loss function
-    model = SimpleNet(num_classes=args.num_classes)
+    model = SimpleNet(num_classes=2)
 
     #Define the optimizer and loss function
     optimizer = Adam(model.parameters(), lr=args.lr, weight_decay=0.0001)
@@ -89,7 +89,6 @@ def main():
     parser.add_argument('--lr', type=float, default=0.003, help='Learning rate.')
     parser.add_argument('--epochs', type=int, default=5, help='Total number of epochs.')
     parser.add_argument('--print_every', type=int, default=10, help='Print every # iterations.')
-    parser.add_argument('--num_classes', type=int, default=2, help='Num classes.')
     #parser.add_argument('--type', choices=['CNN', 'MLP'], default='CNN', help='Type of Network')
     args = parser.parse_args()
 
