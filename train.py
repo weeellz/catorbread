@@ -15,7 +15,7 @@ train_losses, test_losses = [], []
 cat_images = args.cat_images
 bread_images = args.bread_images
 
-train_loader, validation_loader = get_data(cat_images, bread_images)
+train_loader, validation_loader = get_data(cat_images, bread_images, args.batch_size)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -86,6 +86,7 @@ def main():
     parser = argparse.ArgumentParser(description='Training script of CatOrBread.')
     parser.add_argument('--cat_images', type=str, help='Path to cat images.')
     parser.add_argument('--bread_images', type=str, help='Path to bread images.')
+    parser.add_argument('--batch_size', type=int, default=4, help='Batch size.')
     parser.add_argument('--lr', type=float, default=0.003, help='Learning rate.')
     parser.add_argument('--epochs', type=int, default=5, help='Total number of epochs.')
     parser.add_argument('--print_every', type=int, default=10, help='Print every # iterations.')

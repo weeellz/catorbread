@@ -103,7 +103,7 @@ class ToTensor(object):
         image = in_transform(image)[:3,:,:]
         return {'image': image, 'label': label}
 
-def get_data(images_path_1, images_path_2):
+def get_data(images_path_1, images_path_2, batch_size):
     path_cat = images_path_1
     path_bread = images_path_2
 
@@ -128,7 +128,7 @@ def get_data(images_path_1, images_path_2):
                                                    ToTensor()
                                                ]))
 
-    batch_size = 4
+    batch_size = batch_size
     validation_split = 0.2
     shuffle_dataset = True
     random_seed = 42
